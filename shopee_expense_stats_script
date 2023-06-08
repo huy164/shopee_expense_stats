@@ -1,0 +1,48 @@
+// Function to scroll down the page
+function scrollDown() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+// Function to extract and sum the values
+function calculateSum() {
+  // Find all elements with the specified class
+  var elements = document.getElementsByClassName('DeWpya');
+
+  // Extract the numerical values from each element and sum them
+  var totalSum = 0;
+  for (var i = 0; i < elements.length; i++) {
+    var text = elements[i].textContent.trim();
+    var value = text.replace(/[^\d]/g, ''); // Remove non-digit characters
+    if (value) {
+      totalSum += parseInt(value);
+    }
+  }
+
+  // Return the total sum
+  return totalSum;
+}
+
+
+// Auto scroll and recalculate until the total sum no longer changes
+var previousSum = null;
+var delayBetweenIterations = 1000; // Delay in milliseconds
+
+function autoScrollAndRecalculate() {
+  scrollDown(); // Scroll down the page
+
+  setTimeout(function() {
+    var currentSum = calculateSum(); // Calculate the sum
+
+    if (previousSum !== null && currentSum === previousSum) {
+      // Stop the iteration if the sum no longer changes
+      console.log('Iteration stopped. Total sum stabilized.');
+      console.log('Total :', currentSum); // Format and print the total sum
+    } else {
+      previousSum = currentSum;
+      console.log('processing ...');
+      autoScrollAndRecalculate(); // Recursive call for the next iteration
+    }
+  }, delayBetweenIterations);
+}
+
+autoScrollAndRecalculate(); // Start the auto scroll and recalculate process
