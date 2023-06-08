@@ -1,5 +1,6 @@
-login to shopee
-go to your purchase
-select tab "complete"
-open dev tool by right click -> select inspect or press F12
-select tab console and paste the script -> press Enter and wait for few seconds
+- Login to Shopee
+- Go to your purchase
+- Select the "complete" tab
+- Open dev tools by right-clicking and selecting "inspect" or pressing F12
+- Select the "console" tab and paste the script
+- Press enter and wait for a few seconds
